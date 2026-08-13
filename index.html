@@ -1,0 +1,468 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>J. S. Bach — Mass in B Minor, BWV 232</title>
+
+<style>
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    background: #f3ead8;
+    color: #3b2c25;
+    font-family: Georgia, "Times New Roman", serif;
+}
+
+.container {
+    max-width: 780px;
+    margin: auto;
+    padding: 50px 18px 70px;
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 50px;
+}
+
+.composer {
+    color: #80604f;
+    font-size: 14px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    margin-bottom: 18px;
+}
+
+h1 {
+    font-size: 34px;
+    font-weight: normal;
+    margin: 0;
+    color: #392923;
+}
+
+.subtitle {
+    margin-top: 12px;
+    color: #705448;
+    font-size: 15px;
+}
+
+.year {
+    margin-top: 6px;
+    color: #927666;
+    font-size: 13px;
+}
+
+.divider {
+    width: 70px;
+    height: 1px;
+    background: #9a7560;
+    margin: 25px auto 0;
+}
+
+.section {
+    margin-top: 40px;
+}
+
+.section-title {
+    color: #713d35;
+    font-size: 21px;
+    font-weight: normal;
+    border-bottom: 1px solid #d5c5ad;
+    padding-bottom: 8px;
+    margin-bottom: 16px;
+}
+
+.subsection {
+    color: #80604f;
+    font-size: 13px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin: 22px 0 10px;
+}
+
+.track {
+    background: rgba(255, 251, 242, 0.65);
+    border: 1px solid #ded0ba;
+    border-radius: 7px;
+    padding: 13px;
+    margin-bottom: 9px;
+}
+
+.track-title {
+    display: flex;
+    gap: 12px;
+    align-items: baseline;
+    margin-bottom: 8px;
+}
+
+.number {
+    color: #987463;
+    font-size: 13px;
+    min-width: 25px;
+}
+
+.name {
+    color: #3d2c25;
+    font-size: 16px;
+}
+
+audio {
+    display: block;
+    width: 100%;
+    height: 38px;
+}
+
+.footer {
+    text-align: center;
+    margin-top: 55px;
+    padding-top: 25px;
+    border-top: 1px solid #d5c5ad;
+    color: #927666;
+    font-size: 13px;
+    line-height: 1.8;
+}
+
+@media (max-width: 600px) {
+    .container {
+        padding: 38px 14px 55px;
+    }
+
+    h1 {
+        font-size: 27px;
+    }
+
+    .section-title {
+        font-size: 19px;
+    }
+
+    .name {
+        font-size: 15px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<div class="container">
+
+<header class="header">
+    <div class="composer">Johann Sebastian Bach</div>
+
+    <h1>Mass in B Minor</h1>
+
+    <div class="subtitle">BWV 232</div>
+
+    <div class="subtitle">
+        Monteverdi Choir · English Baroque Soloists
+    </div>
+
+    <div class="subtitle">
+        John Eliot Gardiner
+    </div>
+
+    <div class="year">2015</div>
+
+    <div class="divider"></div>
+</header>
+
+
+<div id="music"></div>
+
+
+<footer class="footer">
+    J. S. Bach · Mass in B Minor, BWV 232<br>
+    Monteverdi Choir · English Baroque Soloists<br>
+    John Eliot Gardiner · 2015
+</footer>
+
+</div>
+
+
+<script>
+
+const tracks = [
+
+    {
+        number: "01",
+        section: "I. Missa",
+        subsection: "Kyrie",
+        title: "Kyrie eleison",
+        file: "Monteverdi Choir - Mass in B Minor_ BWV 232  Kyrie eleison.mp3"
+    },
+
+    {
+        number: "02",
+        section: "I. Missa",
+        subsection: "Kyrie",
+        title: "Christe eleison",
+        file: "Hannah Morrison - Mass in B Minor_ BWV 232  Christe eleison.mp3"
+    },
+
+    {
+        number: "03",
+        section: "I. Missa",
+        subsection: "Kyrie",
+        title: "Kyrie eleison II",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Kyrie_eleison_II.mp3"
+    },
+
+    {
+        number: "04",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Gloria in excelsis Deo",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Gloria_in_excelsis.mp3"
+    },
+
+    {
+        number: "05",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Laudamus te",
+        file: "Hannah Morrison - Mass in B Minor_ BWV 232  Laudamus te.mp3"
+    },
+
+    {
+        number: "06",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Gratias agimus tibi",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Gratias_agimus_tibi.mp3"
+    },
+
+    {
+        number: "07",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Domine Deus",
+        file: "Hannah Morrison - Mass in B Minor_ BWV 232  Domine Deus.mp3"
+    },
+
+    {
+        number: "08",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Qui tollis peccata mundi",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Qui_tollis_peccata.mp3"
+    },
+
+    {
+        number: "09",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Qui sedes ad dextram Patris",
+        file: "Esther_Brazil_Mass_in_B_Minor_BWV_232_Qui_sedes_ad_dextram_P.mp3"
+    },
+
+    {
+        number: "10",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Quoniam tu solus Sanctus",
+        file: "David_Shipley_Mass_in_B_Minor_BWV_232_Quoniam_tu_solus_Sanct.mp3"
+    },
+
+    {
+        number: "11",
+        section: "I. Missa",
+        subsection: "Gloria",
+        title: "Cum Sancto Spiritu",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Cum_Sancto_Spiritu.mp3"
+    },
+
+    {
+        number: "12",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Credo in unum Deum",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Credo_in_unum_Deum.mp3"
+    },
+
+    {
+        number: "13",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Et in unum Dominum",
+        file: "Hannah_Morrison_Mass_in_B_Minor_BWV_232_Et_in_unum_Dominum.mp3"
+    },
+
+    {
+        number: "14",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Et incarnatus est",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Et_incarnatus_est.mp3"
+    },
+
+    {
+        number: "15",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Crucifixus",
+        file: "Monteverdi Choir - Mass in B Minor_ BWV 232  Crucifixus.mp3"
+    },
+
+    {
+        number: "16",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Et resurrexit",
+        file: "Monteverdi Choir - Mass in B Minor_ BWV 232  Et resurrexit.mp3"
+    },
+
+    {
+        number: "17",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Et in Spiritum Sanctum",
+        file: "Alex_Ashworth_Mass_in_B_Minor_BWV_232_Et_in_Spiritum_Sanctum.mp3"
+    },
+
+    {
+        number: "18",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Confiteor unum baptisma",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Confiteor_unum_bapt.mp3"
+    },
+
+    {
+        number: "19",
+        section: "II. Symbolum Nicenum",
+        subsection: "Credo",
+        title: "Et expecto resurrectionem",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Et_expecto_resurrec.mp3"
+    },
+
+    {
+        number: "20",
+        section: "III. Sanctus",
+        subsection: "",
+        title: "Sanctus",
+        file: "Monteverdi Choir - Mass in B Minor_ BWV 232  Sanctus.mp3"
+    },
+
+    {
+        number: "21",
+        section: "IV. Osanna",
+        subsection: "",
+        title: "Osanna",
+        file: "Monteverdi Choir - Mass in B Minor_ BWV 232  Osanna.mp3"
+    },
+
+    {
+        number: "22",
+        section: "V. Benedictus",
+        subsection: "",
+        title: "Benedictus",
+        file: "Nick Pritchard - Mass in B Minor_ BWV 232  Benedictus.mp3"
+    },
+
+    {
+        number: "23",
+        section: "IV. Osanna",
+        subsection: "",
+        title: "Osanna da capo",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Osanna_Da_capo.mp3"
+    },
+
+    {
+        number: "24",
+        section: "VI. Agnus Dei",
+        subsection: "",
+        title: "Agnus Dei",
+        file: "Meg Bragle - Mass in B Minor_ BWV 232  Agnus Dei.mp3"
+    },
+
+    {
+        number: "25",
+        section: "VII. Dona nobis pacem",
+        subsection: "",
+        title: "Dona nobis pacem",
+        file: "Monteverdi_Choir_Mass_in_B_Minor_BWV_232_Dona_nobis_pacem.mp3"
+    }
+
+];
+
+
+const music = document.getElementById("music");
+
+let currentSection = "";
+let currentSubsection = "";
+
+tracks.forEach(track => {
+
+    if (track.section !== currentSection) {
+
+        currentSection = track.section;
+        currentSubsection = "";
+
+        const section = document.createElement("section");
+        section.className = "section";
+        section.id = "section-" + track.number;
+
+        const heading = document.createElement("h2");
+        heading.className = "section-title";
+        heading.textContent = track.section;
+
+        section.appendChild(heading);
+        music.appendChild(section);
+    }
+
+    const sections = music.querySelectorAll(".section");
+    const current = sections[sections.length - 1];
+
+    if (track.subsection && track.subsection !== currentSubsection) {
+
+        currentSubsection = track.subsection;
+
+        const sub = document.createElement("div");
+        sub.className = "subsection";
+        sub.textContent = track.subsection;
+
+        current.appendChild(sub);
+    }
+
+    const trackBox = document.createElement("div");
+    trackBox.className = "track";
+
+    const titleBox = document.createElement("div");
+    titleBox.className = "track-title";
+
+    const number = document.createElement("span");
+    number.className = "number";
+    number.textContent = track.number;
+
+    const name = document.createElement("span");
+    name.className = "name";
+    name.textContent = track.title;
+
+    titleBox.appendChild(number);
+    titleBox.appendChild(name);
+
+    const audio = document.createElement("audio");
+    audio.controls = true;
+    audio.preload = "none";
+
+    const source = document.createElement("source");
+
+    source.src = encodeURI(track.file);
+    source.type = "audio/mpeg";
+
+    audio.appendChild(source);
+
+    trackBox.appendChild(titleBox);
+    trackBox.appendChild(audio);
+
+    current.appendChild(trackBox);
+});
+
+</script>
+
+</body>
+</html>
