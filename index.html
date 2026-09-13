@@ -17,6 +17,8 @@ body {
     background: #f3ead8;
     color: #3b2c25;
     font-family: Georgia, "Times New Roman", serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
 }
 
 /* Dedication */
@@ -216,6 +218,9 @@ h1 {
     gap: 9px;
 }
 
+
+/* Play Button */
+
 .play-button {
     width: 22px;
     height: 22px;
@@ -233,11 +238,57 @@ h1 {
     cursor: pointer;
     padding: 0;
 
-    font-family: Georgia, "Times New Roman", serif;
-    font-size: 10px;
-
     flex-shrink: 0;
+
+    -webkit-appearance: none;
+    appearance: none;
+
+    -webkit-tap-highlight-color: transparent;
+
+    font-size: 0;
+    line-height: 0;
+
+    position: relative;
 }
+
+
+/* Play icon */
+
+.play-button::before {
+    content: "";
+
+    width: 0;
+    height: 0;
+
+    border-top: 5px solid transparent;
+    border-bottom: 5px solid transparent;
+    border-left: 7px solid #713d35;
+
+    margin-left: 2px;
+}
+
+
+/* Pause icon */
+
+.play-button.playing::before {
+    content: "";
+
+    width: 7px;
+    height: 9px;
+
+    border: none;
+
+    margin-left: 0;
+
+    background:
+        linear-gradient(
+            to right,
+            #713d35 0 2px,
+            transparent 2px 5px,
+            #713d35 5px 7px
+        );
+}
+
 
 .progress-container {
     flex: 1;
@@ -676,7 +727,7 @@ tracks.forEach(track => {
     const playButton = document.createElement("button");
     playButton.className = "play-button";
     playButton.type = "button";
-    playButton.textContent = "▶";
+    playButton.setAttribute("aria-label", "Play");
 
 
     const progressContainer = document.createElement("div");
@@ -712,12 +763,14 @@ tracks.forEach(track => {
 
 
     audio.addEventListener("play", () => {
-        playButton.textContent = "Ⅱ";
+        playButton.classList.add("playing");
+        playButton.setAttribute("aria-label", "Pause");
     });
 
 
     audio.addEventListener("pause", () => {
-        playButton.textContent = "▶";
+        playButton.classList.remove("playing");
+        playButton.setAttribute("aria-label", "Play");
     });
 
 
@@ -766,7 +819,9 @@ tracks.forEach(track => {
 
     audio.addEventListener("ended", () => {
 
-        playButton.textContent = "▶";
+        playButton.classList.remove("playing");
+        playButton.setAttribute("aria-label", "Play");
+
         progress.style.width = "0%";
 
     });
